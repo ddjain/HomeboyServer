@@ -1,3 +1,3 @@
 module.exports = (req,res,next) =>{
-console.log("Auth is called for secure API");
+    //TODO: Validate JWT TOKEN for each request here if valid then call next()
 };
