@@ -10,11 +10,17 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^1.1.3",
+    "core-js": "^2.6.9",
     "express": "^4.15.2",
     "express-fileupload": "^0.1.2",
+    "express-routes-mapper": "^1.1.0",
+    "http": "0.0.0",
     "id3js": "^1.1.3",
     "mysql": "^2.13.0",
+    "mysql2": "^1.7.0",
+    "nodemon": "^1.19.4",
     "request": "^2.81.0",
+    "sqlite3": "^4.1.0",
     "stopword": "^0.1.1"
   }
 }
