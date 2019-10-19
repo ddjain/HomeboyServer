@@ -19,14 +19,14 @@ var roomService = require('./services/room.service');
 Route Configuration 
 //TODO : Move this routes to seprate file. 
 */
-const mappedOpenRoutes = mapRoutes(config.publicRoutes, 'controllers/');
-const mappedPrivateRoutes = mapRoutes(config.privateRoute, 'controllers/');
+const mappedOpenRoutes = mapRoutes(config.publicRoutes, 'api/controllers/');
+const mappedPrivateRoutes = mapRoutes(config.privateRoute, 'api/controllers/');
 const auth = require('./auth/auth.js');
-
 
 /**
  * express application
  */
+const application = () => {
 const app = express();
 app.use('/*', cors());
 app.use(bodyParser.json()); // support json encoded bodies
@@ -37,6 +37,9 @@ app.use('/api', mappedOpenRoutes);
 app.use('/api/auth/', mappedPrivateRoutes);
 
 app.listen(8080, function () {
-    console.log('listening on *:8080');
+    console.log('Application started on port 8080');
 });
 
+};
+
+module.exports =application;
