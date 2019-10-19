@@ -13,7 +13,7 @@ Server Configuration
 */
 var config = require('../config/index');
 var dbService = require('./services/database.service');
-var userService = require('./services/user.service');
+var roomService = require('./services/room.service');
 
 /*
 Route Configuration 
@@ -28,7 +28,7 @@ const auth = require('./auth/auth.js');
  * express application
  */
 const app = express();
-app.use(cors());
+app.use('/*',cors());
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use('/',express.static('../static/app'))
@@ -40,6 +40,3 @@ app.listen(8080, function(){
     console.log('listening on *:8080');
 });
 
-userService().validate("darshan","jain").then(function(res){
-console.log(res);
-},function(err){})

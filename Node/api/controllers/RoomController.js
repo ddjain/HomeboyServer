@@ -1,15 +1,17 @@
- 
+var roomService = require('../services/room.service');
 const RoomController = () => {
     const getRoomById = (req, res) => {
         return res.status(200).json({id:req.params.id, name:"My Room",userId:83});
     };
   
     const getAllRooms = (req, res) => {
-        var rooms =[];
-        for(var i=0;i<10;i++){
-            rooms.push({id:i+132,name:"My Room "+i,userId:req.params.userId})
-        }
-        return res.status(200).json({data:rooms });
+        let userId = req.params.userId;
+        roomService().getAllRooms(userId).then(function(result){
+            console.log(result);
+            return res.status(200).json({data:result });
+        },function(err){
+            res.status(400).json(err);
+        })
     };
 
     const addRoom = (req, res) => {
@@ -32,6 +34,6 @@ const RoomController = () => {
         updateRoom
     };
   };
-   
+  
   module.exports=RoomController;
 
