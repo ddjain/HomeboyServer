@@ -39,6 +39,7 @@ const application = () => {
     app.listen(8080, function () {
         console.log('Application started on port 8080');
     });
+    dbService().connect();
 };
 
 module.exports = application;
