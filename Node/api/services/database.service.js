@@ -1,17 +1,17 @@
-// const database = require('../../config/database');
+const database = require('../../config/database');
 
-// const dbservice = () =>{
-//     const connect = () => {
-//         database.connect(function(err) {
-//         if (err) throw err;
-//         console.log("Connected to database successfully");
-//         });
-//     }
+const dbservice = () =>{
+    const connect = () => {
+        database.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected to database successfully");
+        });
+    }
 
-//     return {
-//         connect,
-//     };
-// };
+    return {
+        connect,
+    };
+};
 
 
-// module.exports = dbservice;
+module.exports = dbservice;
