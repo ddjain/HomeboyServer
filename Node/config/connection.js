@@ -1,6 +1,6 @@
 
   const connection = {
-    db: "homeboy-db",
+    db: "appdb",
     username: "root",
     password: "",
     host: 'localhost',
