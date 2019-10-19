@@ -6,7 +6,7 @@ const UserController = () => {
     let password = req.body.password;
     userService().validate(username, password).then(function (result) {
       if (result != null) {
-        return res.status(200).json({ userId: result.id, token: "ThisIsAuthToken", msg: 'User is valid.' });
+        return res.status(200).json({ userId: result.id,token: authService().issue({"username":username}), msg: 'User is valid.' });
       }
       else {
         return res.status(401).json({ msg: 'User is invalid.' });

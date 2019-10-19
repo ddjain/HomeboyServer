@@ -23,7 +23,6 @@ const DeviceController = () => {
             }, function (err) {
                 res.status(400).json(err);
             })
-      
     };  
 
     const updateDevice = (req, res) => {
