@@ -27,19 +27,18 @@ const auth = require('./auth/auth.js');
  * express application
  */
 const application = () => {
-const app = express();
-app.use('/*', cors());
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+    const app = express();
+    app.use('/*', cors());
+    app.use(bodyParser.json()); // support json encoded bodies
+    app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-app.all('/api/auth/*', (req, res, next) => auth(req, res, next));
-app.use('/api', mappedOpenRoutes);
-app.use('/api/auth/', mappedPrivateRoutes);
+    app.all('/api/auth/*', (req, res, next) => auth(req, res, next));
+    app.use('/api', mappedOpenRoutes);
+    app.use('/api/auth/', mappedPrivateRoutes);
 
-app.listen(8080, function () {
-    console.log('Application started on port 8080');
-});
-
+    app.listen(8080, function () {
+        console.log('Application started on port 8080');
+    });
 };
 
 module.exports = application;
