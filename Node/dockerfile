@@ -1,8 +1,7 @@
 FROM node
 MAINTAINER Darshan Jain
 WORKDIR /usr/src/app
-COPY Node/ ./
+COPY ./ ./
 RUN npm install
 EXPOSE 8080
-CMD [ "cd", "api"]
-CMD [ "node", "api.js"]
+CMD [ "node", "./api/api.js"]
