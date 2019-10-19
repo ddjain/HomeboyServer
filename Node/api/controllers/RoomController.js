@@ -1,30 +1,48 @@
 var roomService = require('../services/room.service');
 const RoomController = () => {
     const getRoomById = (req, res) => {
-        return res.status(200).json({id:req.params.id, name:"My Room",userId:83});
+        let id = req.params.id;
+        roomService().getRoomById(id).then(function (result) {
+            return res.status(200).json({ data: result });
+        }, function (err) {
+            res.status(400).json(err);
+        })
+
     };
-  
+
     const getAllRooms = (req, res) => {
         let userId = req.params.userId;
-        roomService().getAllRooms(userId).then(function(result){
-            console.log(result);
-            return res.status(200).json({data:result });
-        },function(err){
+        roomService().getAllRooms(userId).then(function (result) {
+            return res.status(200).json({ data: result });
+        }, function (err) {
             res.status(400).json(err);
         })
     };
 
     const addRoom = (req, res) => {
-        res.send('RoomController :  deleteRoom');
-    }; 
+        let room = req.body.room;
+        console.log(room);
+        roomService().addRoom(room).then(function (result) {
+            console.log(result);
+            room.id = result.insertId;
+            return res.status(200).json({ data: room, msg: "Room added successfully" });
+        }, function (err) {
+            res.status(400).json(err);
+        })
+    };
 
     const deleteRoom = (req, res) => {
-        res.send('RoomController   deleteRoom');
-    }; 
-    
+        let roomId = req.params.id;
+        roomService().deleteRoom(roomId).then(function (result) {
+            return res.status(200).json({ data: result, });
+        }, function (err) {
+            res.status(400).json(err);
+        })
+    };
+
     const updateRoom = (req, res) => {
-        res.send('RoomController: addNewRoom');
-    };  
+
+    };
 
     return {
         getRoomById,
@@ -33,7 +51,7 @@ const RoomController = () => {
         deleteRoom,
         updateRoom
     };
-  };
-  
-  module.exports=RoomController;
+};
+
+module.exports = RoomController;
 
