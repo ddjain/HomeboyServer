@@ -2,7 +2,7 @@ var roomService = require('../services/room.service');
 const RoomController = () => {
     const getRoomById = (req, res) => {
         let id = req.params.id;
-        roomService().getRoomById(id).then(function (result) {
+        roomService().getDeviceByRoom(id).then(function (result) {
             return res.status(200).json({ data: result });
         }, function (err) {
             res.status(400).json(err);
