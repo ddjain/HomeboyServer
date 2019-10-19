@@ -31,7 +31,7 @@ const app = express();
 app.use('/*', cors());
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-app.use('/', express.static('../static/app'))
+
 app.all('/api/auth/*', (req, res, next) => auth(req, res, next));
 app.use('/api', mappedOpenRoutes);
 app.use('/api/auth/', mappedPrivateRoutes);

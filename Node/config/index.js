@@ -1,9 +1,11 @@
 
 const publicRoutes = {
-    'POST /login': 'UserController.login'
+    'POST /login': 'UserController.login',
+    'GET /healthcheck': 'UserController.healthCheck'
 }
 
 const privateRoute = {
+    
     'GET /room/:id': 'RoomController.getRoomById',
     'GET /rooms/:userId': 'RoomController.getAllRooms',
     'POST /room': 'RoomController.addRoom',
@@ -18,4 +20,5 @@ const privateRoute = {
 
 var config = { publicRoutes, privateRoute };
 module.exports = config;
+
 

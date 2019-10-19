@@ -13,8 +13,14 @@ const UserController = () => {
       }
     })
   };
+
+  const healthCheck = (req, res)=>{
+    return res.status(200).json({status : 'Homeboy server is up' });
+  }
+  
   return {
     login,
+    healthCheck
   };
 };
 
