@@ -1,4 +1,4 @@
-FROM node
+FROM node:latest
 MAINTAINER Darshan Jain
 WORKDIR /usr/src/app
 COPY . .
