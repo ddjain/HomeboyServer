@@ -1,7 +1,12 @@
-
+var deviceService = require('../services/device.service');
 const DeviceController = () => {
     const getDevicesByRoom = (req, res) => {
-      res.send('DeviceController === > getDevicesByRoom ');
+        let roomId = req.params.roomId;
+        deviceService().getDeviceByRoom(roomId).then(function (result) {
+            return res.status(200).json({ data: result, });
+        }, function (err) {
+            res.status(400).json(err);
+        })
     };
   
     const getDeviceById = (req, res) => {
@@ -9,15 +14,29 @@ const DeviceController = () => {
     };
 
     const addDevice = (req, res) => {
-        res.send('DeviceController: addNewRoom');
+            let device = req.body.device;
+            console.log(device);
+            deviceService().addDevice(device).then(function (result) {
+                console.log(result);
+                device.id = result.insertId;
+                return res.status(200).json({ data: device, msg: "device added successfully" });
+            }, function (err) {
+                res.status(400).json(err);
+            })
+      
     };  
 
     const updateDevice = (req, res) => {
-        res.send('DeviceController   deleteRoom');
+        res.send('DeviceController   updateDevice');
     }; 
 
     const deleteDevice = (req, res) => {
-        res.send('DeviceController  updateRoom');
+        let deviceId = req.params.id;
+        deviceService().deleteDevice(deviceId).then(function (result) {
+            return res.status(200).json({ data: result, msg: "device deleted successfully" });
+        }, function (err) {
+            res.status(400).json(err);
+        })
     }; 
   
     return {

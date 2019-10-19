@@ -10,31 +10,24 @@ const roomService = () => {
             });
         }));
     }
-    const getDeviceByRoom = (id) => {
-        var sql = "SELECT * FROM rooms where id = " + id;
+    const getDeviceByRoom = (roomId) => {
+        var sql = "SELECT * FROM devices where roomId = " + roomId;
         return executeQuery(sql)
     }
 
-    const getAllRooms = (userId) => {
-        var sql = "SELECT * FROM rooms where userId = " + userId;
+    const addDevice = (device) => {
+        let sql = "INSERT INTO devices (name,status,roomId) VALUES ('" + device.name + "', '" + device.status + "','"+device.roomId+"')";
         return executeQuery(sql)
     }
 
-    const addRoom = (room) => {
-        let sql = "INSERT INTO rooms (name, userId) VALUES ('" + room.name + "', '" + room.userId + "')";
+    const deleteDevice = (id) => {
+        let sql = "DELETE FROM DEVICES WHERE ID="+id;
         return executeQuery(sql)
     }
-
-    const deleteRoom = (roomId) => {
-        let sql = "DELETE FROM rooms WHERE id=" + roomId;
-        return executeQuery(sql);
-    }
-
     return {
         getDeviceByRoom,
-        getAllRooms,
-        addRoom,
-        deleteRoom
+        addDevice,
+        deleteDevice
     };
 };
 

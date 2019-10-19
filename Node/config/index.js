@@ -12,7 +12,7 @@ const privateRoute = {
     'GET /device/:roomId': 'DeviceController.getDevicesByRoom',
     'GET /device/:id': 'DeviceController.getDeviceById',
     'POST /device': 'DeviceController.addDevice',
-    'DELETE /device': 'DeviceController.deleteDevice',
+    'DELETE /device/:id': 'DeviceController.deleteDevice',
     'PUT /device': 'DeviceController.updateDevice'
 };
 
