@@ -5,8 +5,7 @@ const express = require('express');
 const http = require('http');
 const mapRoutes = require('express-routes-mapper');
 const bodyParser = require('body-parser')
-
-
+const cors = require('cors');
 /*
 Server Configuration 
 //TODO : Move this routes to seprate file. 
@@ -14,23 +13,21 @@ Server Configuration
 
 const publicRoutes = require('../config/routes/publicRoute');
 var config = require('../config/index');
-const mappedOpenRoutes = mapRoutes({'GET /user': 'UserController.create',
-                                    'GET /validate/:token': 'UserController.validate',
-                                    'GET /login/:username/:password' : 'UserController.login'
-                                }, 'controllers/');
-const mappedPrivateRoutes = mapRoutes({'GET /password': 'UserController.secure'}, 'controllers/');
-
+const mappedOpenRoutes = mapRoutes(config.publicRoutes, 'controllers/');
+const mappedPrivateRoutes = mapRoutes(config.privateRoute, 'controllers/');
 const auth = require('./auth/auth.js');
 
 /**
  * express application
  */
 const app = express();
+app.use(cors());
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use('/',express.static('../static/app'))
-app.all('/secure/api/*', (req, res, next) => auth(req, res, next));
+app.all('/api/auth/*', (req, res, next) => auth(req, res, next));
 app.use('/api', mappedOpenRoutes);
-app.use('/secure/api', mappedPrivateRoutes);
-
+app.use('/api/auth/', mappedPrivateRoutes);
 
 app.listen(8080, function(){
     console.log('listening on *:8080');

@@ -1,27 +1,19 @@
 const authService = require('../services/auth.service');
 
 const UserController = () => {
-    const create = (req, res) => {
-      res.send('created a User with without es6 class syntax');
-    };
-   
-    const secure = (req, res) => {
-        res.send('created a User with without es6 class syntax');
-      };
-
       const login = (req,res)=>{
-        //TODO: Send data through body, validate user in DB, if user valid return JWT Token
-      }
-
-      const validate = (req,res)=>{
-       //TODO: Validate JWT Token came over Authorization Header
-      }
-
+        let username = req.body.username;
+        let password = req.body.password;
+        //TODO: get data from database.
+        if(username =="admin" && password =="admin"){
+          return res.status(200).json({userId:1234,token:"ThisIsAuthToken", msg: 'User is valid.' });
+        }
+        else{
+          return res.status(401).json({ msg: 'User is invalid.' });  
+        }
+      };
     return {
-      create,
-      secure,
       login,
-      validate
     };
   };
    

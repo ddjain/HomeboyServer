@@ -1,3 +1,8 @@
 module.exports = (req,res,next) =>{
-    //TODO: Validate JWT TOKEN for each request here if valid then call next()
+    if (req.header('Authorization') && req.header('Authorization')=="ThisIsAuthToken") {
+        next();
+    } else{
+        return res.status(401).json({ msg: 'No Authorization was found' });
+    }
+
 };

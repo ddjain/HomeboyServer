@@ -1,4 +1,7 @@
+
 const publicRoutes = {
-    'GET /user': 'UserController.create'
-  };
+    'POST /login' : 'UserController.login'
+}
+
+
  module.export=publicRoutes;

@@ -6,7 +6,7 @@ const authService = () => {
   const verify = (token, cb) => jwt.verify(token, secret, {}, cb);
   return {
     issue,
-    verify,
+    verify
   };
 };
 
