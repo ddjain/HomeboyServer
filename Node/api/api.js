@@ -6,16 +6,23 @@ const http = require('http');
 const mapRoutes = require('express-routes-mapper');
 const bodyParser = require('body-parser')
 const cors = require('cors');
+
 /*
 Server Configuration 
 //TODO : Move this routes to seprate file. 
 */
-
-const publicRoutes = require('../config/routes/publicRoute');
 var config = require('../config/index');
+var dbService = require('./services/database.service');
+var userService = require('./services/user.service');
+
+/*
+Route Configuration 
+//TODO : Move this routes to seprate file. 
+*/
 const mappedOpenRoutes = mapRoutes(config.publicRoutes, 'controllers/');
 const mappedPrivateRoutes = mapRoutes(config.privateRoute, 'controllers/');
 const auth = require('./auth/auth.js');
+
 
 /**
  * express application
@@ -33,4 +40,6 @@ app.listen(8080, function(){
     console.log('listening on *:8080');
 });
 
-
+userService().validate("darshan","jain").then(function(res){
+console.log(res);
+},function(err){})
