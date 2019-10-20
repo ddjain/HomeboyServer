@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-homeboy-db:
+   homeboy-db:
     image: mysql:5.7.22
     environment:
       - MYSQL_ROOT_PASSWORD=root
