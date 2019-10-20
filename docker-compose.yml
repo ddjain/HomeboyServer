@@ -3,9 +3,12 @@ services:
   node-api:
     build: ./Node/
     ports:
-      - "80:8080"
+      - "8080:8080"
     depends_on:
       - homeboy-db
+  nginx-ui:
+    image: nginx
+    port: 80:80
   homeboy-db:
     image: mysql:5.7.22
     environment:
