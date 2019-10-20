@@ -2,9 +2,9 @@
  const connection = {
   db: "appdb",
   username: "root",
-  password: "",
+  password: "root",
   host: 'homeboy-db',
-  port:'3305',
+  port:'3306',
 };
 
   

@@ -17,5 +17,7 @@ homeboy-db:
       - homeboy-db
   nginx-ui:
     image: nginx
-    port: 80:80
+    ports: 
+      - "80:80"
   
+
