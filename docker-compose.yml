@@ -1,5 +1,14 @@
 version: '3.7'
 services:
+homeboy-db:
+    image: mysql:5.7.22
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=appdb
+      - MYSQL_USER=darshan
+      - MYSQL_PASSWORD=darshan
+    ports:
+      - "3300:3306"
   node-api:
     build: ./Node/
     ports:
@@ -9,12 +18,4 @@ services:
   nginx-ui:
     image: nginx
     port: 80:80
-  homeboy-db:
-    image: mysql:5.7.22
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=appdb
-      - MYSQL_USER=darshan
-      - MYSQL_PASSWORD=darshan
-    ports:
-      - "3306:3306"
+  
