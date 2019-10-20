@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  node-api:
+    build: ./Node/
+    ports:
+      - "80:8080"
+    depends_on:
+      - homeboy-db
+  homeboy-db:
+    image: mysql:5.7.22
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=appdb
+      - MYSQL_USER=darshan
+      - MYSQL_PASSWORD=darshan
+    ports:
+      - "3306:3306"
