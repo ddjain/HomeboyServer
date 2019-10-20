@@ -8,7 +8,8 @@ services:
       - homeboy-db
   nginx-ui:
     image: nginx
-    port: 80:80
+    ports: 
+      - "80:80"
   homeboy-db:
     image: mysql:5.7.22
     environment:
