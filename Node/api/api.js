@@ -38,8 +38,12 @@ const application = () => {
 
     app.listen(8080, function () {
         console.log('Application started on port 8080');
-    });
-    dbService().connect();
+    });	
+	if(process.argv.length ==7){
+		dbService().connect();
+	} else {
+        console.log("Please provide Db configuration to connect database : npm start <DB_NAME> <USERNAME> <PASSWORD> <HOST> <PORT>")
+    }
 };
 
 module.exports = application;
