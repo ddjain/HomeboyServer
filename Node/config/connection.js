@@ -2,8 +2,8 @@
   const connection = {
     db: "appdb",
     username: "root",
-    password: "",
-    host: 'localhost',
+    password: "root",
+    host: 'mysql-container',
     port:'3306',
   };
   
