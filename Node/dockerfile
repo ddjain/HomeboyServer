@@ -1,7 +1,14 @@
 FROM node:latest
 MAINTAINER Darshan Jain
+
+ARG DB_NAME="appdb"
+ARG USERNAME="root"
+ARG PASSWORD=""
+ARG HOST="localhost"
+ARG PORT="3306"
+
 WORKDIR /usr/src/app
 COPY . .
 RUN npm install
 EXPOSE 8080
-CMD [ "node", "./api/api.js"]
+CMD [ "npm", "start", ${DB_NAME}, ${USERNAME}, ${PASSWORD}, ${HOST}, ${PORT}]
